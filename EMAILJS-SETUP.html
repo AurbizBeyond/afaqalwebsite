@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EmailJS Setup Guide — Afaq Al-Hind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #f8f5ee; color: #374151; line-height: 1.7; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+    .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+    .logo-row img { height: 64px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 32px; color: #0a1628; }
+    h1 span { color: #c9971a; }
+    .intro { background: #0a1628; color: rgba(255,255,255,0.8); border-radius: 12px; padding: 24px 28px; margin-bottom: 40px; font-size: 15px; line-height: 1.8; border-left: 4px solid #c9971a; }
+    .intro strong { color: #e8ba3a; }
+    .step { background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(10,22,40,0.07); border-top: 3px solid #c9971a; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #c9971a; color: white; border-radius: 50%; font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+    .step h2 { font-family: 'Playfair Display', serif; font-size: 20px; color: #0a1628; margin-bottom: 12px; }
+    .step p { font-size: 15px; margin-bottom: 10px; }
+    .step a { color: #c9971a; font-weight: 600; }
+    code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 2px 8px; font-size: 13px; font-family: monospace; color: #0a1628; }
+    .code-block { background: #0a1628; color: #e8ba3a; border-radius: 8px; padding: 20px 24px; margin: 16px 0; font-family: monospace; font-size: 13px; line-height: 1.9; white-space: pre-wrap; overflow-x: auto; }
+    .code-block .comment { color: rgba(255,255,255,0.35); }
+    .code-block .key { color: #93c5fd; }
+    .code-block .val { color: #86efac; }
+    .highlight { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 18px; font-size: 14px; margin: 12px 0; color: #92400e; }
+    .highlight strong { color: #78350f; }
+    .template-box { background: #f8fafc; border: 1px dashed #c9971a; border-radius: 8px; padding: 20px 24px; margin: 16px 0; font-size: 14px; line-height: 1.9; color: #374151; white-space: pre-wrap; font-family: monospace; }
+    .done-box { background: linear-gradient(135deg, #0a1628, #1a3a6b); color: white; border-radius: 12px; padding: 32px; text-align: center; margin-top: 32px; }
+    .done-box h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: #e8ba3a; margin-bottom: 8px; }
+    .done-box p { color: rgba(255,255,255,0.65); font-size: 15px; }
+    .file-badge { display: inline-block; background: #0a1628; color: #e8ba3a; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-family: monospace; margin: 2px; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="logo-row">
+    <img src="images/al hind logo.png" alt="Afaq Al-Hind" />
+    <div>
+      <h1>EmailJS <span>Setup Guide</span></h1>
+      <p style="color:#6b7280;font-size:14px;">Connect your website forms to afaqalhind@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="intro">
+    <strong>What this does:</strong> When a visitor submits a form on your website (Home quick-enquiry or Contact page), EmailJS sends all their details directly to <strong>afaqalhind@gmail.com</strong> — no backend server needed. The free plan allows <strong>200 emails/month</strong>.<br /><br />
+    Files that use EmailJS: <span class="file-badge">index.html</span> <span class="file-badge">pages/contact.html</span> <span class="file-badge">js/emailjs-handler.js</span>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step-num">1</div>
+    <h2>Create a free EmailJS account</h2>
+    <p>Go to <a href="https://www.emailjs.com" target="_blank">https://www.emailjs.com</a> and sign up for a free account. The free plan gives you 200 emails per month which is more than enough to start.</p>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step-num">2</div>
+    <h2>Connect your Gmail account</h2>
+    <p>In your EmailJS dashboard:</p>
+    <p>→ Click <strong>Email Services</strong> in the left sidebar</p>
+    <p>→ Click <strong>Add New Service</strong></p>
+    <p>→ Choose <strong>Gmail</strong></p>
+    <p>→ Click <strong>Connect Account</strong> and log in with <strong>afaqalhind@gmail.com</strong></p>
+    <p>→ Give it a name like <strong>Afaq Al Hind Gmail</strong> and click <strong>Create Service</strong></p>
+    <p>→ Copy the <strong>Service ID</strong> shown (looks like: <code>service_abc1234</code>)</p>
+    <div class="highlight"><strong>⚠️ Important:</strong> Make sure you are logged into the correct Gmail account (afaqalhind@gmail.com) in your browser before clicking Connect Account.</div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step-num">3</div>
+    <h2>Create an Email Template</h2>
+    <p>→ Click <strong>Email Templates</strong> in the left sidebar</p>
+    <p>→ Click <strong>Create New Template</strong></p>
+    <p>→ Set the <strong>To Email</strong> field to: <code>afaqalhind@gmail.com</code></p>
+    <p>→ Set the <strong>Subject</strong> to:</p>
+    <div class="code-block">New Enquiry — {{service}} (from {{from_name}})</div>
+    <p>→ In the <strong>Content / Body</strong> area, paste this exactly:</p>
+    <div class="template-box">New enquiry received from the Afaq Al-Hind website.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ENQUIRY DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Name:              {{from_name}}
+Phone / WhatsApp:  {{phone}}
+Email:             {{reply_to}}
+Nationality:       {{nationality}}
+Service Required:  {{service}}
+Preferred Contact: {{contact_method}}
+
+Message:
+{{message}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sent from afaqalhind.ae website forms</div>
+    <p>→ Click <strong>Save</strong> then copy the <strong>Template ID</strong> (looks like: <code>template_xyz7890</code>)</p>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step">
+    <div class="step-num">4</div>
+    <h2>Get your Public Key</h2>
+    <p>→ Click your profile icon (top right) → <strong>Account</strong></p>
+    <p>→ Under the <strong>General</strong> tab, find <strong>Public Key</strong></p>
+    <p>→ Copy it (looks like: <code>AbCdEfGhIjKlMnOpQr</code>)</p>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step">
+    <div class="step-num">5</div>
+    <h2>Paste your keys into the website</h2>
+    <p>Open the file <span class="file-badge">js/emailjs-handler.js</span> in any text editor (Notepad, VS Code, etc.) and replace the placeholder values at the top of the file:</p>
+    <div class="code-block"><span class="comment">// Replace these three values with your actual EmailJS credentials:</span>
+
+<span class="key">const EMAILJS_SERVICE_ID</span>  = <span class="val">'service_abc1234'</span>;   <span class="comment">// ← paste your Service ID here</span>
+<span class="key">const EMAILJS_TEMPLATE_ID</span> = <span class="val">'template_xyz7890'</span>;  <span class="comment">// ← paste your Template ID here</span>
+<span class="key">const EMAILJS_PUBLIC_KEY</span>  = <span class="val">'AbCdEfGhIjKlMnOp'</span>;  <span class="comment">// ← paste your Public Key here</span></div>
+    <p>→ Save the file. That's it — both forms are now live!</p>
+    <div class="highlight"><strong>💡 Tip:</strong> These are safe to put in your website code. The Public Key is designed to be used client-side. Never share your Private Key (which EmailJS also has — just don't use that one).</div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step-num">6</div>
+    <h2>Test it</h2>
+    <p>→ Open <code>index.html</code> in your browser</p>
+    <p>→ Fill in the Quick Enquiry form at the bottom and submit</p>
+    <p>→ Check <strong>afaqalhind@gmail.com</strong> inbox — you should receive the email within seconds</p>
+    <p>→ Also test the full form on <code>pages/contact.html</code></p>
+    <div class="highlight"><strong>Not receiving emails?</strong> Check your Gmail Spam folder. Also verify that your EmailJS Service status shows <strong>Connected</strong> in the dashboard.</div>
+  </div>
+
+  <div class="done-box">
+    <h3>✅ Setup Complete!</h3>
+    <p>Every form submission on your website will now be delivered directly to afaqalhind@gmail.com with all client details — name, phone, service needed, message and more.</p>
+  </div>
+
+</div>
+</body>
+</html>
